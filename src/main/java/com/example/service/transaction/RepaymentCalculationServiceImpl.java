@@ -9,21 +9,23 @@ import com.example.model.CommandType;
 import com.example.model.LoanCommand;
 import com.example.model.PaymentCommand;
 import com.example.model.RepaymentDetails;
+import com.example.service.RepaymentCalculationService;
 import com.example.util.CalculationUtil;
 
-public class RepaymentCalculationService
+public class RepaymentCalculationServiceImpl implements RepaymentCalculationService
 {
-    private static final RepaymentCalculationService instance = new RepaymentCalculationService();
+    private static final RepaymentCalculationServiceImpl instance = new RepaymentCalculationServiceImpl();
 
-    private RepaymentCalculationService()
+    private RepaymentCalculationServiceImpl()
     {
     }
 
-    public static RepaymentCalculationService getInstance()
+    public static RepaymentCalculationServiceImpl getInstance()
     {
         return instance;
     }
 
+    @Override
     public List<RepaymentDetails> doCalculateRepayment(List<Command> commands)
     {
         LoanCommand loanCommand = (LoanCommand) commands.get(0);
