@@ -3,6 +3,9 @@
 <li>Transactions in the file needs to be in the order of their emi for a particular bank and borrower.</li>
 </ul>
 
+<h3>Sequence Diagram</h3>
+![Screenshot](The Ledger Co-Sequence Diagram.png)
+
 <h3>Build</h3>
 <code>mvn clean install -DskipTests -q assembly:single</code>
 

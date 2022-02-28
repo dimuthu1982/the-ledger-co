@@ -34,6 +34,7 @@ public class CommandExecutionServiceImpl implements CommandExecutionService
         List<RepaymentDetails> loanDetailsList = new ArrayList();
         List<RepaymentDetails> loanDetails;
         Map<String, List<Command>> commands = commandDataHolder.getCommands();
+
         for (String key : commandDataHolder.getBalanceCommands())
         {
             loanDetails = calculationService.doCalculateRepayment(commands.get(key));
