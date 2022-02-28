@@ -23,7 +23,6 @@ import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class CommandExecutionServiceTest
 {
     private CommandExecutionService commandExecutionService;
