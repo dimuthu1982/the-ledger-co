@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.file;
 
 import com.example.common.FileDataTransformer;
 import com.example.exception.InvalidFileInputFoundException;
@@ -11,6 +11,17 @@ import com.example.model.PaymentCommand;
 public class TextFileCommandTransformer implements FileDataTransformer
 {
     public static final String SPACE = " ";
+
+    private static final FileDataTransformer instance = new TextFileCommandTransformer();
+
+    public static FileDataTransformer getInstance()
+    {
+        return instance;
+    }
+
+    private TextFileCommandTransformer()
+    {
+    }
 
     @Override
     public Command transformToCommand(String rawData)

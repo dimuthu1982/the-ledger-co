@@ -11,7 +11,6 @@ import com.example.exception.CommandExecutionFailedException;
 import com.example.exception.CommandValidationFailedException;
 import com.example.exception.InvalidFileInputFoundException;
 import com.example.model.RepaymentDetails;
-import com.example.service.impl.CommandExecutionServiceImpl;
 
 import org.hamcrest.collection.IsIterableContainingInRelativeOrder;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +29,7 @@ public class CommandExecutionServiceTest
     @BeforeEach
     void setUp()
     {
-        commandExecutionService = new CommandExecutionServiceImpl();
+        commandExecutionService = CommandExecutionServiceImpl.getInstance();
     }
 
     @Test
