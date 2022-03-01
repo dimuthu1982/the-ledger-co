@@ -1,17 +1,19 @@
 package com.example.model;
 
+import java.math.BigDecimal;
+
 public class LoanCommand extends Command
 {
-    private int principal;
+    private BigDecimal principal;
     private int numberOfYears;
     private int interestRate;
 
-    public int getPrincipal()
+    public BigDecimal getPrincipal()
     {
         return principal;
     }
 
-    public void setPrincipal(int principal)
+    public void setPrincipal(BigDecimal principal)
     {
         this.principal = principal;
     }
@@ -34,19 +36,5 @@ public class LoanCommand extends Command
     public void setInterestRate(int interestRate)
     {
         this.interestRate = interestRate;
-    }
-
-
-    @Override
-    public String toString()
-    {
-        return "LoanCommand{" +
-            "actionType=" + getActionType() +
-            ", bankName=" + getBankName() +
-            ", borrowerName=" + getBorrowerName() +
-            ", principal=" + principal +
-            ", numberOfYears=" + numberOfYears +
-            ", interestRate=" + interestRate +
-            '}';
     }
 }

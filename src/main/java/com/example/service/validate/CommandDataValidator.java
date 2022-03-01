@@ -24,8 +24,8 @@ public class CommandDataValidator
     {
         Map<String, List<Command>> commands = commandDataHolder.getCommands();
         List<Command> commandSequence;
-        for(String key : commands.keySet()) {
-            commandSequence = commands.get(key);
+        for (Map.Entry<String,List<Command>> command : commands.entrySet()) {
+            commandSequence = commands.get(command.getKey());
             validateSequence(commandSequence);
         }
     }

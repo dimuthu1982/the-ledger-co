@@ -33,7 +33,7 @@ public class RepaymentCalculationServiceImpl implements RepaymentCalculationServ
 
         RepaymentDetails loanDetails;
 
-        int principleAmount = loanCommand.getPrincipal();
+        int principleAmount = loanCommand.getPrincipal().intValue();
 
         int totalLoan = CalculationUtil.calculateTotalLoan(principleAmount, loanCommand.getNumberOfYears(), loanCommand.getInterestRate());
         int emi = CalculationUtil.calculateEmi(totalLoan, loanCommand.getNumberOfYears());
@@ -51,7 +51,7 @@ public class RepaymentCalculationServiceImpl implements RepaymentCalculationServ
             else if (CommandType.PAYMENT.equals(transaction.getActionType()))
             {
                 PaymentCommand paymentCommand = ((PaymentCommand) transaction);
-                lumpSumPayment = paymentCommand.getLumpSumAmount();
+                lumpSumPayment = paymentCommand.getLumpSumAmount().intValue();
             }
         }
 

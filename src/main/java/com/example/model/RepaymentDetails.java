@@ -34,11 +34,4 @@ public class RepaymentDetails
     {
         return borrowerName;
     }
-
-    @Override
-    public String toString()
-    {
-        return String.format("%s %s %s %s", bankName, borrowerName, amountPayed, remainingEmi);
-    }
-
 }

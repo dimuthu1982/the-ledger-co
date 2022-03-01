@@ -1,16 +1,18 @@
 package com.example.model;
 
+import java.math.BigDecimal;
+
 public class PaymentCommand extends Command implements Repayment
 {
-    private int lumpSumAmount;
+    private BigDecimal lumpSumAmount;
     private int emiNo;
 
-    public int getLumpSumAmount()
+    public BigDecimal getLumpSumAmount()
     {
         return lumpSumAmount;
     }
 
-    public void setLumpSumAmount(int lumpSumAmount)
+    public void setLumpSumAmount(BigDecimal lumpSumAmount)
     {
         this.lumpSumAmount = lumpSumAmount;
     }

@@ -2,6 +2,10 @@ package com.example.util;
 
 public class CalculationUtil
 {
+    private CalculationUtil()
+    {
+    }
+
     public static int calculateEmi(int principleAmount, int numberOfYears)
     {
         double amountPayedWithInterest = principleAmount;
@@ -20,7 +24,8 @@ public class CalculationUtil
      */
     public static int calculateTotalLoan(int principleAmount, int numberOfYears, int interestRate)
     {
-        double loanInterest = Math.ceil((principleAmount * numberOfYears * interestRate) / 100);
+        double totalLoan = (double) (principleAmount * numberOfYears * interestRate) / 100;
+        double loanInterest = Math.ceil(totalLoan);
 
         double amountPayedWithInterest = Double.valueOf(principleAmount) + loanInterest;
         return (int) amountPayedWithInterest;

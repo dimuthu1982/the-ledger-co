@@ -2,9 +2,7 @@ package com.example.service;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import com.example.Main;
 import com.example.exception.CommandExecutionFailedException;
@@ -22,7 +20,7 @@ import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CommandExecutionServiceTest
+class CommandExecutionServiceTest
 {
     private CommandExecutionService commandExecutionService;
 
@@ -36,7 +34,7 @@ public class CommandExecutionServiceTest
     void shouldReturnData() throws CommandExecutionFailedException
     {
         Collection<RepaymentDetails> repaymentDetails = commandExecutionService.doExecuteCommands(getFilePath("valid_input.txt"));
-        assertEquals(repaymentDetails.size(), 4);
+        assertEquals(4, repaymentDetails.size());
 
         assertThat(repaymentDetails, IsIterableContainingInRelativeOrder.<RepaymentDetails>containsInRelativeOrder(
             allOf(
@@ -67,10 +65,10 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldRecalculateRepaymentWhenPaymentMade() throws CommandExecutionFailedException
+    void shouldRecalculateRepaymentWhenPaymentMade() throws CommandExecutionFailedException
     {
         Collection<RepaymentDetails> repaymentDetails = commandExecutionService.doExecuteCommands(getFilePath("payment_command.txt"));
-        assertEquals(repaymentDetails.size(), 1);
+        assertEquals(1, repaymentDetails.size());
         assertThat(repaymentDetails, IsIterableContainingInRelativeOrder.<RepaymentDetails>containsInRelativeOrder(
             allOf(
                 hasProperty("bankName", is("IDIDI")),
@@ -82,7 +80,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenLoanDetailsMissing() throws CommandExecutionFailedException
+    void shouldReportErrorWhenLoanDetailsMissing() throws CommandExecutionFailedException
     {
         try
         {
@@ -96,7 +94,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenFieldEmpty() throws CommandExecutionFailedException
+    void shouldReportErrorWhenFieldEmpty() throws CommandExecutionFailedException
     {
         try
         {
@@ -110,7 +108,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenLoanDetailsMissingValues() throws CommandExecutionFailedException
+    void shouldReportErrorWhenLoanDetailsMissingValues() throws CommandExecutionFailedException
     {
         try
         {
@@ -124,7 +122,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenPaymentDetailsMissingValues() throws CommandExecutionFailedException
+    void shouldReportErrorWhenPaymentDetailsMissingValues() throws CommandExecutionFailedException
     {
         try
         {
@@ -138,7 +136,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenBalanceDetailsMissingValues() throws CommandExecutionFailedException
+    void shouldReportErrorWhenBalanceDetailsMissingValues() throws CommandExecutionFailedException
     {
         try
         {
@@ -152,7 +150,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenInvalidTransactionType() throws CommandExecutionFailedException
+    void shouldReportErrorWhenInvalidTransactionType() throws CommandExecutionFailedException
     {
         try
         {
@@ -166,7 +164,7 @@ public class CommandExecutionServiceTest
     }
 
     @Test
-    public void shouldReportErrorWhenInvalidPrinciple() throws CommandExecutionFailedException
+    void shouldReportErrorWhenInvalidPrinciple() throws CommandExecutionFailedException
     {
         try
         {
@@ -177,16 +175,6 @@ public class CommandExecutionServiceTest
         {
             assertEquals("Error in transforming command.LOAN IDIDI Dale 10000XXX 5 4", e.getMessage());
         }
-    }
-
-    private Collection<RepaymentDetails> getValidRepayments()
-    {
-        List<RepaymentDetails> repaymentDetails = new ArrayList(4);
-        repaymentDetails.add(new RepaymentDetails("IDIDI", "Dale", 1000, 55));
-        repaymentDetails.add(new RepaymentDetails("IDIDI", "Dale", 8000, 20));
-        repaymentDetails.add(new RepaymentDetails("MBI", "Harry", 1044, 12));
-        repaymentDetails.add(new RepaymentDetails("MBI", "Harry", 0, 24));
-        return repaymentDetails;
     }
 
     private static Path getFilePath(String fileName)

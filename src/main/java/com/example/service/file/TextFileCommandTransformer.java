@@ -1,5 +1,7 @@
 package com.example.service.file;
 
+import java.math.BigDecimal;
+
 import com.example.common.FileDataTransformer;
 import com.example.exception.InvalidFileInputFoundException;
 import com.example.model.BalanceCommand;
@@ -69,7 +71,7 @@ public class TextFileCommandTransformer implements FileDataTransformer
         command.setActionType(CommandType.valueOf(data[0]));
         command.setBankName(getRequiredValue(data[1]));
         command.setBorrowerName(getRequiredValue(data[2]));
-        command.setPrincipal(Integer.parseInt(getRequiredValue(data[3])));
+        command.setPrincipal(new BigDecimal(getRequiredValue(data[3])));
         command.setNumberOfYears(Integer.parseInt(getRequiredValue(data[4])));
         command.setInterestRate(Integer.parseInt(getRequiredValue(data[5])));
         return command;
@@ -85,7 +87,7 @@ public class TextFileCommandTransformer implements FileDataTransformer
         command.setActionType(CommandType.valueOf(data[0]));
         command.setBankName(getRequiredValue(getRequiredValue(data[1])));
         command.setBorrowerName(getRequiredValue(data[2]));
-        command.setLumpSumAmount(Integer.parseInt(getRequiredValue(data[3])));
+        command.setLumpSumAmount(new BigDecimal(getRequiredValue(data[3])));
         command.setEmiNo(Integer.parseInt(getRequiredValue(data[4])));
         return command;
     }
