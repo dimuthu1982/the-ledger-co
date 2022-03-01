@@ -1,13 +1,15 @@
 package com.example.model;
 
+import java.math.BigDecimal;
+
 public class RepaymentDetails
 {
     private String bankName;
     private String borrowerName;
-    private int amountPayed;
+    private BigDecimal amountPayed;
     private int remainingEmi;
 
-    public RepaymentDetails(String bankName, String borrowerName, int amountPayed, int remainingEmi)
+    public RepaymentDetails(String bankName, String borrowerName, BigDecimal amountPayed, int remainingEmi)
     {
         this.bankName = bankName;
         this.borrowerName = borrowerName;
@@ -15,7 +17,7 @@ public class RepaymentDetails
         this.remainingEmi = remainingEmi;
     }
 
-    public int getAmountPayed()
+    public BigDecimal getAmountPayed()
     {
         return amountPayed;
     }
@@ -33,5 +35,11 @@ public class RepaymentDetails
     public String getBorrowerName()
     {
         return borrowerName;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("%s %s %s %s", bankName, borrowerName, amountPayed, remainingEmi);
     }
 }

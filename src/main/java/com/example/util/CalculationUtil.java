@@ -1,17 +1,16 @@
 package com.example.util;
 
+import java.math.BigDecimal;
+
 public class CalculationUtil
 {
     private CalculationUtil()
     {
     }
 
-    public static int calculateEmi(int principleAmount, int numberOfYears)
+    public static int calculateEmi(BigDecimal loanWithInterest, int numberOfYears)
     {
-        double amountPayedWithInterest = principleAmount;
-
-        double emi = Math.ceil((amountPayedWithInterest / (numberOfYears * 12)));
-        return (int) emi;
+        return (int) Math.ceil((loanWithInterest.doubleValue() / (numberOfYears * 12)));
     }
 
     /**
@@ -22,13 +21,13 @@ public class CalculationUtil
      * @param interestRate    interest rate.
      * @return total loan amount.
      */
-    public static int calculateTotalLoan(int principleAmount, int numberOfYears, int interestRate)
+    public static BigDecimal calculateTotalLoan(BigDecimal principleAmount, int numberOfYears, int interestRate)
     {
-        double totalLoan = (double) (principleAmount * numberOfYears * interestRate) / 100;
+
+        double totalLoan = (principleAmount.doubleValue() * numberOfYears * interestRate) / 100;
         double loanInterest = Math.ceil(totalLoan);
 
-        double amountPayedWithInterest = Double.valueOf(principleAmount) + loanInterest;
-        return (int) amountPayedWithInterest;
+        return BigDecimal.valueOf(principleAmount.doubleValue() + loanInterest);
     }
 
     /**
@@ -48,8 +47,8 @@ public class CalculationUtil
      * @param eni
      * @return
      */
-    public static int calculateRemainingEmis(int remainingLoan, int eni)
+    public static int calculateRemainingEmis(BigDecimal remainingLoan, int eni)
     {
-        return (int) Math.ceil((double) remainingLoan / eni);
+        return (int) Math.ceil(remainingLoan.doubleValue() / eni);
     }
 }

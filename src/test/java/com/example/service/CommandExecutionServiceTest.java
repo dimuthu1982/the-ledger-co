@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
@@ -40,25 +41,25 @@ class CommandExecutionServiceTest
             allOf(
                 hasProperty("bankName", is("IDIDI")),
                 hasProperty("borrowerName", is("Dale")),
-                hasProperty("amountPayed", is(1000)),
+                hasProperty("amountPayed", is(BigDecimal.valueOf(1000))),
                 hasProperty("remainingEmi", is(55))
             ),
             allOf(
                 hasProperty("bankName", is("IDIDI")),
                 hasProperty("borrowerName", is("Dale")),
-                hasProperty("amountPayed", is(8000)),
+                hasProperty("amountPayed", is(BigDecimal.valueOf(8000))),
                 hasProperty("remainingEmi", is(20))
             ),
             allOf(
                 hasProperty("bankName", is("MBI")),
                 hasProperty("borrowerName", is("Harry")),
-                hasProperty("amountPayed", is(1044)),
+                hasProperty("amountPayed", is(BigDecimal.valueOf(1044))),
                 hasProperty("remainingEmi", is(12))
             ),
             allOf(
                 hasProperty("bankName", is("MBI")),
                 hasProperty("borrowerName", is("Harry")),
-                hasProperty("amountPayed", is(0)),
+                hasProperty("amountPayed", is(BigDecimal.valueOf(0))),
                 hasProperty("remainingEmi", is(24))
             )
         ));
@@ -73,7 +74,7 @@ class CommandExecutionServiceTest
             allOf(
                 hasProperty("bankName", is("IDIDI")),
                 hasProperty("borrowerName", is("Dale")),
-                hasProperty("amountPayed", is(3652)),
+                hasProperty("amountPayed", is(BigDecimal.valueOf(3652))),
                 hasProperty("remainingEmi", is(4))
             )
         ));

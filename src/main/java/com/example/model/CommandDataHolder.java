@@ -2,7 +2,7 @@ package com.example.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,7 +15,7 @@ public class CommandDataHolder
     public CommandDataHolder()
     {
         commandDataMap = new HashMap();
-        balanceCommands = new HashSet();
+        balanceCommands = new LinkedHashSet();
     }
 
     public void addCommand(Command command)

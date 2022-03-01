@@ -1,5 +1,6 @@
 package com.example.service.transaction;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +34,9 @@ public class RepaymentCalculationServiceImpl implements RepaymentCalculationServ
 
         RepaymentDetails loanDetails;
 
-        int principleAmount = loanCommand.getPrincipal().intValue();
+        BigDecimal principleAmount = loanCommand.getPrincipal();
 
-        int totalLoan = CalculationUtil.calculateTotalLoan(principleAmount, loanCommand.getNumberOfYears(), loanCommand.getInterestRate());
+        BigDecimal totalLoan = CalculationUtil.calculateTotalLoan(principleAmount, loanCommand.getNumberOfYears(), loanCommand.getInterestRate());
         int emi = CalculationUtil.calculateEmi(totalLoan, loanCommand.getNumberOfYears());
 
         int lumpSumPayment = 0;
@@ -58,11 +59,11 @@ public class RepaymentCalculationServiceImpl implements RepaymentCalculationServ
         return loanDetailList;
     }
 
-    private RepaymentDetails handleBalance(LoanCommand loanCommand, int totalLoan, int lumpSumPayment, int emiAmount, int noOfEmiPayed)
+    private RepaymentDetails handleBalance(LoanCommand loanCommand, BigDecimal totalLoan, int lumpSumPayment, int emiAmount, int noOfEmiPayed)
     {
-        int totalAmountPayed = CalculationUtil.calculateTotalAmountPayed(emiAmount, noOfEmiPayed) + lumpSumPayment;
+        BigDecimal totalAmountPayed = new BigDecimal(CalculationUtil.calculateTotalAmountPayed(emiAmount, noOfEmiPayed) + lumpSumPayment);
 
-        int remainingEmis = CalculationUtil.calculateRemainingEmis(totalLoan - totalAmountPayed, emiAmount);
+        int remainingEmis = CalculationUtil.calculateRemainingEmis(totalLoan.subtract(totalAmountPayed), emiAmount);
 
         return new RepaymentDetails(loanCommand.getBankName(), loanCommand.getBorrowerName(), totalAmountPayed, remainingEmis);
     }

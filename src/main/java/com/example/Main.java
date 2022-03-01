@@ -17,7 +17,7 @@ public class Main
 
     public static void main(String[] args) throws CommandExecutionFailedException
     {
-        List<RepaymentDetails> loanDetails = CommandExecutionServiceImpl.getInstance().doExecuteCommands(getFilePath("input_file2.txt"));
+        List<RepaymentDetails> loanDetails = CommandExecutionServiceImpl.getInstance().doExecuteCommands(getFilePath("input1.txt"));
 
         LOGGER.info("OUTPUT:");
         loanDetails.forEach(LOGGER::info);
