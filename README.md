@@ -1,7 +1,7 @@
 <h3>Introduction</h3>
 Application is about reading transaction made by borrowers to the bank in relations to their loans and calculating amount payed so far and 
 remaining number of payments.
-The inputs a fed by an text file and the application reads the file to identify the <i>Loan, Payments and Balance</i>.
+The inputs a fed by an text file and the application reads the file to identify the <i>Loan, Payments</i> and <i>Balance</i>.
 
 <h3>Sequence Diagram</h3>
 
